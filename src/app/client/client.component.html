@@ -1,0 +1,140 @@
+<div class="card m-3">
+  <h5 class="card-header text-center">Client Information</h5>
+  <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row ">
+              <div class="col-md-6 row row-item">
+                <div class="col-sm-3 labelfont form-row-padding" >
+                  <p >First Name</p>
+                </div>
+                <div class=" col-sm-9 form-row-padding">
+                  <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 row row-item">
+                <div class="col-sm-3 form-row-padding">
+                  <label class="labelfont">Last Name</label>
+                </div>
+                <div class="col-sm-9 col-md-9">
+                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+          <div class="row">
+              <div class="col-md-6 row row-item">
+              <div class="col-sm-3 labelfont form-row-padding" >
+                  <label>Middle Name</label>
+               </div>
+               <div class=" col-sm-9 form-row-padding">
+              <input type="text" formControlName="middleName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.middleName.errors }" />
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                  <div *ngIf="f.middleName.errors.required">Middle Name is required</div>
+              </div>
+            </div>
+            </div>
+            <div class="col-md-6 row row-item">
+              <div class="col-sm-3 labelfont form-row-padding" >
+                  <label>Date of Birth</label>
+                </div>
+                <div class=" col-sm-9 form-row-padding">
+                  <input type="date" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+                  <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                      <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                      <div *ngIf="f.dob.errors.pattern">Date of Birth must be a valid date in the format YYYY-MM-DD</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 row row-item">
+              <div class="col-sm-3 labelfont form-row-padding">
+              <label>Phone Number</label>
+              </div>
+              <div class=" col-sm-9 form-row-padding">
+              <input type="number" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                  <div *ngIf="f.phone.errors.required">Phone number is required</div>
+                  <div *ngIf="f.phone.errors.email">Phone number must be a valid</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 row row-item">
+            <div class="col-sm-3 labelfont form-row-padding">
+              <label>Gender</label>
+              </div>
+              <div class=" col-sm-9 form-row-padding">
+              <select id="gender" formControlName="gender" class='form-control' [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                <option value="man">Man</option>
+                <option value="formale">formale</option>
+              </select>
+              <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                <div *ngIf="f.gender.errors.required">Gender is required</div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 row row-item">
+              <div class="col-sm-3 labelfont form-row-padding">
+              <label>Client Group</label>
+              </div>
+              <div class=" col-sm-9 form-row-padding">
+              <div class="container">
+                <mat-form-field >
+                  <mat-label>Select Category:</mat-label>
+                  <mat-select [formControl]="categoriesControl" multiple>
+
+                    <mat-select-trigger>
+                      <mat-chip-list >
+                        <mat-chip *ngFor="let category of categoriesControl.value"
+                          [removable]="true" (removed)="onCatRemoved(category)" color="accent" selected>
+                          {{ category }}
+                          <mat-icon matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                      </mat-chip-list>
+                    </mat-select-trigger>
+
+                    <mat-option *ngFor="let category of categories" [value]="category" >
+                      {{ category }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+              </div>
+            </div>
+            <div class="col-md-6 row row-item">
+              <div class="col-sm-3 labelfont form-row-padding">
+              <label>Coordinator</label>
+              </div>
+              <div class=" col-sm-9 form-row-padding">
+              <select id="gender" formControlName="coordinator" class='form-control' [ngClass]="{ 'is-invalid': submitted && f.coordinator.errors }">
+                <option value="man">Johnes</option>
+                <option value="formale">Coliwood</option>
+                <option value="formale">etc</option>
+              </select>
+              <div *ngIf="submitted && f.coordinator.errors" class="invalid-feedback">
+                <div *ngIf="f.coordinator.errors.required">Coordinator is required</div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group form-check">
+              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+              <label for="acceptTerms" class="form-check-label">Do not sent SMS</label>
+              <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+          </div>
+          <div class="text-right">
+              <button class="btn btn-primary mr-1">Next</button>
+              <button class="btn btn-secondary" type="reset" (click)="onReset()">Clear</button>
+          </div>
+      </form>
+  </div>
+</div>

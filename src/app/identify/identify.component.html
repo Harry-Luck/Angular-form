@@ -1,0 +1,74 @@
+<div class="card m-3">
+	<h5 class="card-header text-center">Identify Varification</h5>
+	<div class="card-body">
+		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+			<div class="row">
+			  <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Document Type</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<select formControlName="docu" class='form-control' [ngClass]="{ 'is-invalid': submitted && f.docu.errors }">
+						<option value="PassPort">Passport</option>
+						<option value="Birth">Birth</option>
+						<option value="Certificate">Certificate</option>
+						<option value="Driving">Driving</option>
+					</select>
+					<div *ngIf="submitted && f.docu.errors" class="invalid-feedback">
+						<div *ngIf="f.docu.errors.required">Document type is required</div>
+					</div>
+          </div>
+				</div>
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Series</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="series" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.series.errors }" />
+					<div *ngIf="submitted && f.series.errors" class="invalid-feedback">
+						<div *ngIf="f.series.errors.required">First Name is required</div>
+					</div>
+				</div>
+        </div>
+			</div>
+			<div class="row">
+
+				<div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Number</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+					<div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+						<div *ngIf="f.number.errors.required">Number is required</div>
+					</div>
+          </div>
+				</div>
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Date of issue</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="dateissue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateissue.errors }" />
+					<div *ngIf="submitted && f.dateissue.errors" class="invalid-feedback">
+						<div *ngIf="f.dateissue.errors.required">Middle Name is required</div>
+					</div>
+          </div>
+				</div>
+			</div>
+			<div>
+        <div class="form-row form-row-padding">
+            <div class="mb-3">
+              <label for="formFile" class="form-label labelfont">Upload file example</label>
+              <input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile">
+              <button (click)="this.upload()" type="button" class="btn btn-primary mt-3">Upload</button>
+            </div>
+        </div>
+			</div>
+			<div class="text-right">
+				<button class="btn btn-primary mr-1">Register</button>
+				<button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

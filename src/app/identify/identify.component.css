@@ -1,0 +1,18 @@
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+  .mat-form-field {
+    width: 100%;
+}
+.labelfont {
+  font-size: 20px;
+}
+.row-item{
+  align-items: center;
+}
+.form-row-padding{
+  padding-top: 8%;
+}
+.card-header{
+  font-size: 30px;
+
+}

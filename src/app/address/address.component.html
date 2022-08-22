@@ -1,0 +1,88 @@
+<div class="card m-3">
+	<h5 class="card-header text-center">Address Information</h5>
+	<div class="card-body">
+		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+			<div class="row">
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Index</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="index" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.index.errors }" />
+					<div *ngIf="submitted && f.index.errors" class="invalid-feedback">
+						<div *ngIf="f.index.errors.required">Index is required</div>
+					</div>
+        </div>
+				</div>
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+          <label>Country</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+          <div class="form-group col">
+            <div class="container">
+            <mat-select-country>
+            </mat-select-country>
+          </div>
+          </div>
+          </div>
+        </div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Area</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.area.errors }" />
+					<div *ngIf="submitted && f.area.errors" class="invalid-feedback">
+						<div *ngIf="f.area.errors.required">Area is required</div>
+					</div>
+          </div>
+				</div>
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>City</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+            <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+					<div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+						<div *ngIf="f.city.errors.required">City is required</div>
+					</div>
+          </div>
+				</div>
+			</div>
+			<div class="row">
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>Street</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.street.errors }" />
+					<div *ngIf="submitted && f.street.errors" class="invalid-feedback">
+						<div *ngIf="f.street.errors.required">Street Name is required</div>
+					</div>
+          </div>
+				</div>
+        <div class="col-md-6 row row-item">
+          <div class="col-sm-3 labelfont form-row-padding" >
+					<label>House</label>
+          </div>
+          <div class=" col-sm-9 form-row-padding">
+					<input type="text" formControlName="house" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.house.errors }" />
+					<div *ngIf="submitted && f.house.errors" class="invalid-feedback">
+						<div *ngIf="f.house.errors.required">House Name is required</div>
+					</div>
+          </div>
+				</div>
+			</div>
+			<div class="text-right" style="padding-top: 20px;">
+				<button class="btn btn-primary mr-1">Register</button>
+				<button class="btn btn-secondary" type="reset" (click)="onReset()" >Cancel</button>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
